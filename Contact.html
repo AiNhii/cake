@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="css/Contact.css">
+   
+</head>
+<body>
+    
+    <div class="main">
+
+        <form action="#" method="POST" class="form" id="form-1">
+          <h3 class="heading">Contact</h3>
+
+          <div class="spacer"></div>
+  
+          <div class="form-group">
+            <label for="fullname" class="form-label">Your name</label>
+            <input id="fullname" name="fullname" type="text" placeholder="Please enter your full name" class="form-control">
+            <span class="form-message"></span>
+          </div>
+  
+          <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input id="email" name="email" type="text" placeholder="Please enter your email" class="form-control">
+            <span class="form-message"></span>
+          </div>
+  
+          <div class="form-group">
+            <label for="subject" class="form-label">Subject</label>
+            <input id="subject" name="subject" type="text"  class="form-control">
+            <span class="form-message"></span>
+          </div>
+  
+          <div class="form-group">
+            <label for="message" class="form-label">Message</label>
+            <textarea id="message" name="password_confirmation" rows="5" cols="10">
+              </textarea>
+
+            <span class="form-message"></span>
+          </div>
+  
+          <button class="form-submit">Send Mesage</button>
+        </form>
+  
+        
+  
+      </div>
+      <script src="./js/Contact.js"></script>
+      <script>
+  
+        document.addEventListener('DOMContentLoaded', function () {
+          // Mong muốn của chúng ta
+          Validator({
+            form: '#form-1',
+            formGroupSelector: '.form-group',
+            errorSelector: '.form-message',
+            rules: [
+              Validator.isRequired('#fullname', 'Please fill out your name'),
+              Validator.isEmail('#email','Please fill out your email'),
+              Validator.minLength('#subject', 50,'Subject should not shorter than 50 characters.'),
+              Validator.isRequired('#message','Please fill out the message'),
+              Validator.isRequired('#subject','Please fill out the subject'),
+              Validator.maxLength('#message',500, 'Message should not exceed 500 characters.'),
+              Validator.maxLength('#fullname', 100, 'Your name should not exceed 100 characters.'),
+              Validator.maxLength('#email', 100, 'Your email should not exceed 100 characters.'),
+              Validator.maxLength('#subject', 250 , 'Subject should not exceed 250 characters.'),
+              
+            ],
+            onSubmit: function (data) {
+              // Call API
+              console.log(data);
+            }
+          });
+  
+  
+          
+        });
+  
+      </script>
+</body>
+</html>
